@@ -10,6 +10,12 @@ test('denies cross-tenant access even for an admin', () => {
   assert.equal(canViewProject(actor, project), false);
 });
 
+test('denies cross-tenant access even for an owner', () => {
+  const actor = { userId: 'u1', tenantId: 'tenant-a', role: 'OWNER' };
+  const project = { ownerId: 'u2', tenantId: 'tenant-b' };
+  assert.equal(canViewProject(actor, project), false);
+});
+
 test('allows same-tenant admin access', () => {
   const actor = { userId: 'u1', tenantId: 'tenant-a', role: 'ADMIN' };
   const project = { ownerId: 'u2', tenantId: 'tenant-a' };
