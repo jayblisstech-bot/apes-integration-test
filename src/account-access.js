@@ -3,10 +3,13 @@
 const PRIVILEGED_ROLES = new Set(['OWNER', 'ADMIN']);
 
 function isSameTenant(actor, project) {
+  const actorTenantId = actor?.tenantId;
+  const projectTenantId = project?.tenantId;
+
   return Boolean(
-    actor.tenantId &&
-    project.tenantId &&
-    actor.tenantId === project.tenantId
+    actorTenantId &&
+    projectTenantId &&
+    actorTenantId === projectTenantId
   );
 }
 
