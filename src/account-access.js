@@ -15,7 +15,9 @@ function isSameTenant(actor, project) {
 
 function canViewProject(actor, project) {
   if (!actor || !project) return false;
-  if (!isSameTenant(actor, project)) return false;
+
+  const sameTenant = isSameTenant(actor, project);
+  if (!sameTenant) return false;
 
   return PRIVILEGED_ROLES.has(actor.role) || actor.userId === project.ownerId;
 }
