@@ -90,7 +90,7 @@
   "security": {
     "dependencyAudit": "required",
     "assurance": {
-      "mode": "audit",
+      "mode": "enforce",
       "failOnSeverities": [
         "P0",
         "P1"
