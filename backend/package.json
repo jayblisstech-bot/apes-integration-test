@@ -1,0 +1,11 @@
+{
+  "name": "apes-integration-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "typecheck": "node --check ../src/account-access.js",
+    "test": "node --test ../tests/*.test.js",
+    "build": "node -e \"console.log('backend build ok')\""
+  },
+  "engines": {"node": ">=20"}
+}
