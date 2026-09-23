@@ -1,0 +1,10 @@
+{
+  "name": "apes-integration-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"console.log('frontend build ok')\"",
+    "lint": "node -e \"console.log('frontend lint ok')\""
+  },
+  "engines": {"node": ">=20"}
+}
