@@ -2,24 +2,60 @@
   "version": 1,
   "runtime": {
     "type": "node",
-    "requiredScripts": ["typecheck", "test", "build"],
-    "optionalScripts": ["lint"],
-    "allowUnlockedInstall": false
+    "requiredScripts": [
+      "typecheck",
+      "test",
+      "build"
+    ],
+    "optionalScripts": [
+      "lint"
+    ],
+    "allowUnlockedInstall": false,
+    "projects": [
+      {
+        "path": "backend",
+        "requiredScripts": [
+          "typecheck",
+          "test",
+          "build"
+        ],
+        "optionalScripts": [],
+        "allowUnlockedInstall": false
+      },
+      {
+        "path": "frontend",
+        "requiredScripts": [
+          "build"
+        ],
+        "optionalScripts": [
+          "lint"
+        ],
+        "allowUnlockedInstall": false
+      }
+    ]
   },
   "risk": {
     "additionalCriticalPaths": [],
-    "additionalHighPaths": ["src/account-access.js"],
+    "additionalHighPaths": [
+      "src/account-access.js"
+    ],
     "additionalLowPaths": []
   },
   "context": {
-    "documents": ["docs/PROJECT_ARCHITECTURE.md", "docs/BUSINESS_RULES.md", "docs/SECURITY_POLICY.md"],
+    "documents": [
+      "docs/PROJECT_ARCHITECTURE.md",
+      "docs/BUSINESS_RULES.md",
+      "docs/SECURITY_POLICY.md"
+    ],
     "includeChangedFiles": true,
     "includeDirectImports": true,
     "maxContextChars": 50000,
     "maxPerFileChars": 12000
   },
   "review": {
-    "allowedExternalProviders": ["gemini"],
+    "allowedExternalProviders": [
+      "gemini"
+    ],
     "maxChunkChars": 45000,
     "maxChunks": 12,
     "requestTimeoutMs": 90000,
@@ -27,9 +63,21 @@
       "mode": "gemini",
       "allowMixedPrimary": false,
       "providerPreference": {
-        "medium": ["openai", "anthropic", "openrouter"],
-        "strong": ["anthropic", "openai", "openrouter"],
-        "advanced": ["anthropic", "openai", "openrouter"]
+        "medium": [
+          "openai",
+          "anthropic",
+          "openrouter"
+        ],
+        "strong": [
+          "anthropic",
+          "openai",
+          "openrouter"
+        ],
+        "advanced": [
+          "anthropic",
+          "openai",
+          "openrouter"
+        ]
       },
       "geminiPool": {
         "cooldown429Ms": 60000,
@@ -40,6 +88,19 @@
     }
   },
   "security": {
-    "dependencyAudit": "required"
+    "dependencyAudit": "required",
+    "assurance": {
+      "mode": "audit",
+      "failOnSeverities": [
+        "P0",
+        "P1"
+      ],
+      "evidenceRoot": "docs/security",
+      "scanRoots": [
+        "."
+      ],
+      "maxFiles": 4000,
+      "maxFileBytes": 1048576
+    }
   }
 }
